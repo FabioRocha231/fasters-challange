@@ -1,9 +1,10 @@
-import Link from 'next/link'
-import { useTheme } from 'next-themes'
-import { memo, useMemo, useState } from 'react'
+// import { useTheme } from 'next-themes'
+import { memo, useState } from 'react'
 
 import MobileNav from './MobileNav'
-import { navItems } from './navItem'
+
+import { controlItems, userItems, systemItems } from './navItem'
+import RenderNavButtons from './NavButtons'
 
 export interface Item {
   name: string
@@ -11,44 +12,18 @@ export interface Item {
 }
 
 const Nav = () => {
-  const { resolvedTheme, setTheme } = useTheme()
+  // const { resolvedTheme, setTheme } = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const renderItems = useMemo(() => {
-    return navItems.map((item) => (
-      <Link href={item.href} key={item.href}>
-        <a>
-          <small>{item.name}</small>
-        </a>
-      </Link>
-    ))
-  }, [])
-
   return (
-    <nav className="z-[6] mb-5 flex w-full items-center gap-4 bg-secondary py-2.5 px-10 shadow-md">
-      <div className="w-full lg:w-2/12">
-        <Link href="/">
-          <a className="small">Logo</a>
-        </Link>
+    <nav className="flex w-full flex-col items-start gap-4 py-2.5 px-10">
+      <div className="hidden w-full flex-col justify-center gap-x-10 lg:flex lg:w-10/12">
+        <RenderNavButtons item={controlItems} />
       </div>
-
-      <div className="hidden w-full justify-center gap-x-10 md:flex lg:w-10/12">
-        {renderItems}
+      <div className="hidden w-full flex-col justify-center gap-x-10 lg:flex lg:w-10/12">
+        <RenderNavButtons item={userItems} />
       </div>
-
-      <div className="flex w-full items-center justify-end lg:w-2/12">
-        <button
-          className="small"
-          onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-        >
-          Change theme
-        </button>
-        <small
-          className="cursor-pointer"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
-          Open mobile nav
-        </small>
+      <div className="hidden w-full flex-col justify-center gap-x-10 lg:flex lg:w-10/12">
+        <RenderNavButtons item={systemItems} />
       </div>
 
       <MobileNav isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />

@@ -12,7 +12,7 @@ export enum SvgIcons {
   People = '/svgs/people.svg',
   ProfileCircle = '/svgs/profile-circle.svg',
   Profile = '/svgs/profile.svg',
-  Setting = '/svgs/settings.svg'
+  Setting = '/svgs/setting.svg'
 }
 
 interface ISvgParams {
