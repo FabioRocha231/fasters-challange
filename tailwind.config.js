@@ -34,11 +34,13 @@ module.exports = {
     backgroundColor: {
       primary: 'var(--bg-primary)',
       secondary: 'var(--bg-secondary)',
-      logo: 'var(--bg-logo)'
+      logo: 'var(--bg-logo)',
+      navHover: 'var(--bg-nav-hover)'
     },
     textColor: {
       primary: 'var(--text-primary)',
-      secondary: 'var(--text-secondary)'
+      secondary: 'var(--text-secondary)',
+      textHover: 'var(--text-hover)'
     }
   },
 
