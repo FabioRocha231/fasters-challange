@@ -7,13 +7,16 @@
   /* UI & surface colors */
   --bg-logo: #355072;
   --bg-nav-hover: rgba(76, 167, 171, .25);
+  --bg-create-event: rgba(76, 167, 171, 1);
   --bg-primary: #ffffff;
   --bg-secondary: #8c8c8c;
+  --bg-search-input: rgba(174, 174, 174, .1);
 
   --text-primary: #585858;
   --text-secondary: #242424;
   --text-hover: #4CA7A8;
   --text-nav-title: #AEAEAE;
+  --text-create-event: #fff;
   /* Brand colors */
   --red: #ef4444;
   --blue: #353739;

@@ -35,13 +35,16 @@ module.exports = {
       primary: 'var(--bg-primary)',
       secondary: 'var(--bg-secondary)',
       logo: 'var(--bg-logo)',
-      navHover: 'var(--bg-nav-hover)'
+      navHover: 'var(--bg-nav-hover)',
+      eventBtn: 'var(--bg-create-event)',
+      search: 'var(--bg-search-input)'
     },
     textColor: {
       primary: 'var(--text-primary)',
       secondary: 'var(--text-secondary)',
       textHover: 'var(--text-hover)',
-      navTitle: 'var(--text-nav-title)'
+      navTitle: 'var(--text-nav-title)',
+      eventBtn: 'var(--text-create-event)'
     }
   },
 
