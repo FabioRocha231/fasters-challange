@@ -6,7 +6,7 @@ export const AsideNavigation = ({
   setSelectedItem
 }: Omit<IRenderNavButtonParams, 'item'>) => {
   return (
-    <nav className="mt-5 flex h-full w-full flex-col items-start">
+    <nav className="mt-5 flex h-full w-full flex-col items-start overflow-y-scroll scrollbar">
       <div className="hidden w-full flex-col justify-center lg:flex">
         <RenderNavButtons
           item={controlItems}
@@ -18,7 +18,7 @@ export const AsideNavigation = ({
       <div className="mt-5 flex w-full flex-1 flex-col justify-between">
         <div className="flex w-full flex-col justify-between">
           <p className="text-sm font-normal text-navTitle">My account</p>
-          <div className="mt-5 hidden w-full flex-col justify-center lg:flex">
+          <div className="mt-2 hidden w-full flex-col justify-center lg:flex">
             <RenderNavButtons
               item={userItems}
               selectedItem={selectedItem}
@@ -28,7 +28,7 @@ export const AsideNavigation = ({
         </div>
         <div className="flex w-full flex-col justify-between">
           <p className="text-sm font-normal text-navTitle">System</p>
-          <div className="mt-5 hidden w-full flex-col justify-center gap-y-5 lg:flex">
+          <div className="hidden w-full flex-col justify-center gap-y-5 lg:flex">
             <RenderNavButtons
               item={systemItems}
               selectedItem={selectedItem}

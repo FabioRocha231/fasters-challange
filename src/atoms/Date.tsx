@@ -1,16 +1,16 @@
 export default function PtData() {
   const currentTime = new Date()
   // const horas = currentTime.getHours()
-  let minutos = currentTime.getMinutes()
-  let segundos = currentTime.getSeconds()
+  // let minutos = currentTime.getMinutes()
+  // let segundos = currentTime.getSeconds()
   let dia = currentTime.getDate()
   let mes = currentTime.getMonth()
   const ano = currentTime.getFullYear()
   const Dia = currentTime.getDay()
   const Mes = currentTime.getUTCMonth()
 
-  if (minutos < 10) minutos = +`0${minutos}`
-  if (segundos < 10) segundos = +`0${segundos}`
+  // if (minutos < 10) minutos = +`0${minutos}`
+  // if (segundos < 10) segundos = +`0${segundos}`
   if (dia < 10) dia = +`0${dia}`
   if (mes < 10) mes = +`0${mes}`
 

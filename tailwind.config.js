@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   corePlugins: {
     container: false
@@ -48,5 +49,5 @@ module.exports = {
     }
   },
 
-  plugins: []
+  plugins: [require('tailwind-scrollbar')]
 }
