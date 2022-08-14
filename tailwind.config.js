@@ -40,7 +40,8 @@ module.exports = {
     textColor: {
       primary: 'var(--text-primary)',
       secondary: 'var(--text-secondary)',
-      textHover: 'var(--text-hover)'
+      textHover: 'var(--text-hover)',
+      navTitle: 'var(--text-nav-title)'
     }
   },
 

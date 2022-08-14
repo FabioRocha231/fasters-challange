@@ -8,7 +8,7 @@ export const controlItems = [
 
 export const userItems = [
   { name: 'Meus Eventos', href: '/', icon: SvgIcons.ProfileCircle },
-  { name: 'Meu time', href: '/', icon: SvgIcons.Profile },
+  { name: 'Meu time', href: '/', icon: SvgIcons.People },
   { name: 'Minhas Atividades', href: '/', icon: SvgIcons.MenuBoard }
 ]
 

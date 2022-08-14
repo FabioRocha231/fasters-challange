@@ -13,6 +13,7 @@
   --text-primary: #585858;
   --text-secondary: #242424;
   --text-hover: #4CA7A8;
+  --text-nav-title: #AEAEAE;
   /* Brand colors */
   --red: #ef4444;
   --blue: #353739;
@@ -24,6 +25,7 @@
   --bg-primary: #1a1a1a;
   --bg-secondary: #242424;
 
+  --text-nav-title: #AEAEAE;
   --text-primary: #bfbfbf;
   --text-secondary: #8c8c8c;
 }

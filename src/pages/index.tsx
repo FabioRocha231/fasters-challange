@@ -21,9 +21,9 @@ const Index = () => {
         />
       }
     >
-      <section className="w-full bg-secondary">
+      <main className="w-full bg-secondary">
         <aside className="flex h-screen w-80 flex-col items-center self-start bg-primary py-10">
-          <figure className="flex max-w-max flex-row items-center justify-center rounded-lg bg-logo p-4">
+          <figure className="flex max-w-max flex-row items-center justify-center bg-logo p-4">
             <Svg
               name={SvgIcons.FasterLogo}
               width={205}
@@ -33,7 +33,7 @@ const Index = () => {
           </figure>
           <Nav />
         </aside>
-      </section>
+      </main>
     </Main>
   )
 }
