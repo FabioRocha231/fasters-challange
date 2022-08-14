@@ -106,7 +106,7 @@ const Nav = ({ isAside }: INavProps) => {
                 alt="notifications"
               />
             </button>
-            <button className="items-cemter flex rounded-lg bg-search p-4 transition-colors hover:bg-navHover">
+            <button className="flex items-center rounded-lg bg-search p-4 transition-colors hover:bg-navHover">
               <Svg
                 name={SvgIcons.Profile}
                 width={24}

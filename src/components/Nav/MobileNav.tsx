@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { memo, ReactNode, useEffect, useMemo, useState } from 'react'
 
-import { navItems } from './navItem'
+import { controlItems } from './navItem'
 
 interface Props {
   children?: ReactNode
@@ -17,7 +17,7 @@ const MobileNav = ({ isOpen, setIsOpen }: Props) => {
     if (!isOpen) setTimeout(() => setRender(false), 450)
   }, [isOpen])
   const renderItems = useMemo(() => {
-    return navItems?.map(({ name, href }) => (
+    return controlItems?.map(({ name, href }) => (
       <Link href={href} key={href}>
         <a
           onClick={() => setIsOpen(false)}
