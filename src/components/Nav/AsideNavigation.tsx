@@ -26,7 +26,7 @@ export const AsideNavigation = ({
             />
           </div>
         </div>
-        <div className="flex w-full flex-col justify-between">
+        <div className="mt-5 flex w-full flex-col justify-between">
           <p className="text-sm font-normal text-navTitle">System</p>
           <div className="hidden w-full flex-col justify-center gap-y-5 lg:flex">
             <RenderNavButtons

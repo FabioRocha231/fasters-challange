@@ -13,7 +13,9 @@ export enum SvgIcons {
   ProfileCircle = '/svgs/profile-circle.svg',
   Profile = '/svgs/profile.svg',
   Setting = '/svgs/setting.svg',
-  Search = '/svgs/search.svg'
+  Search = '/svgs/search.svg',
+  ArrowLeft = '/svgs/arrow-left.svg',
+  ArrowRight = '/svgs/arrow-right.svg'
 }
 
 interface ISvgParams {
