@@ -6,17 +6,20 @@ import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 
 import { Modal } from '@/components'
+import { CreateEventProvider } from '@/context/event-context'
 import { ModalProvider } from '@/context/modal-context'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  // my solution to avoid the any type error in the nextjs app
+  // my solution to avoid the any type error in the nextjs Component
   const AnyComponent = Component as any
   return (
     <ThemeProvider forcedTheme={'light'}>
-      <ModalProvider>
-        <AnyComponent {...pageProps} />
-        <Modal />
-      </ModalProvider>
+      <CreateEventProvider>
+        <ModalProvider>
+          <AnyComponent {...pageProps} />
+          <Modal />
+        </ModalProvider>
+      </CreateEventProvider>
     </ThemeProvider>
   )
 }

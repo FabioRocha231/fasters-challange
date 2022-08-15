@@ -100,8 +100,8 @@ const ModalCard = ({ children }: ComponentWithChildren) => {
       }}
       className={`
         absolute top-[50%] left-[50%] z-[5] max-h-[80vh]
-        min-h-[180px] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 overflow-y-auto bg-secondary
-        lg:w-[30vw]
+        min-h-[180px] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg
+        bg-primary p-2 lg:w-[30vw]
       `}
     >
       {children}
@@ -115,11 +115,16 @@ const Header = () => {
   return (
     <div
       className={`flex flex-row items-center ${
-        title ? 'border-brand-blue-300 mb-3.5 border-b pb-2' : ''
+        title
+          ? 'border-brand-blue-300 mb-3.5 border-b border-slate-300 pb-2'
+          : ''
       }`}
     >
       {title && <p className="mr-auto ml-3 font-semibold">{title}</p>}
-      <div onClick={close} className="ml-auto mr-2 cursor-pointer font-black">
+      <div
+        onClick={close}
+        className="ml-auto mr-2 cursor-pointer text-base font-thin"
+      >
         X
       </div>
     </div>

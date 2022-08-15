@@ -39,7 +39,8 @@
         "plugin:prettier/recommended"
       ],
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "sourceType": "module"
       },
       "rules": {
         "consistent-return": "off",
