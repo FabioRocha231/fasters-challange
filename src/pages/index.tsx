@@ -42,7 +42,7 @@ const Index = () => {
                 <Calendar
                   onChange={onChange}
                   value={date}
-                  className="flex w-80 flex-col items-center rounded-lg border border-slate-300 p-4 text-xs"
+                  className="flex w-full flex-col items-center rounded-lg border border-slate-300 p-4 text-xs"
                   onClickDecade={undefined}
                   locale="en"
                   next2Label={null}
@@ -65,6 +65,7 @@ const Index = () => {
                   }
                 />
               )}
+              <div className="flex w-full"></div>
             </div>
           </section>
         </div>

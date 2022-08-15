@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   // my solution to avoid the any type error in the nextjs app
   const AnyComponent = Component as any
   return (
-    <ThemeProvider>
+    <ThemeProvider forcedTheme={'light'}>
       <ModalProvider>
         <AnyComponent {...pageProps} />
         <Modal />
