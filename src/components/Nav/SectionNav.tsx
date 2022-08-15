@@ -1,5 +1,8 @@
+import { useContext } from 'react'
+
 import PtData from '@/atoms/Date'
 import Svg, { SvgIcons } from '@/atoms/Svg'
+import { ModalContext } from '@/context/modal-context'
 
 import MobileNav from './MobileNav'
 
@@ -12,11 +15,15 @@ export const SectionNav = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen
 }: ISectionNavProps) => {
+  const { setIsOpen } = useContext(ModalContext)
   return (
     <header className="flex w-full flex-row border-b border-slate-300 p-10">
       <nav className="flex w-full items-center">
         <PtData />
-        <button className="group ml-40 rounded-lg bg-eventBtn py-2 px-4 transition-colors hover:bg-navHover">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="group ml-40 rounded-lg bg-eventBtn py-2 px-4 transition-colors hover:bg-navHover"
+        >
           <p className="text-sm font-normal text-eventBtn group-hover:text-textHover">
             + Create event
           </p>
