@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useMemo } from 'react'
+import { toast } from 'react-toastify'
 
 import Svg from '@/atoms/Svg'
 
@@ -25,7 +26,9 @@ export default function RenderNavButtons({
         gap-x-3 rounded-lg p-3 transition-colors hover:bg-navHover ${
           item.name === itemName ? 'bg-navHover' : ''
         }`}
-        onClick={() => setSelectedItem(item)}
+        onClick={() => {
+          setSelectedItem(item)
+        }}
       >
         <Svg name={item.icon} width={24} height={24} alt={item.name} />
         <Link href={item.href}>
@@ -39,6 +42,6 @@ export default function RenderNavButtons({
         </Link>
       </span>
     ))
-  }, [selectedItem])
+  }, [selectedItem, toast])
   return <>{renderItems}</>
 }
