@@ -2,9 +2,11 @@ import { useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { CreateEventParams, EventsContext } from '@/context/event-context'
+import { ModalContext } from '@/context/modal-context'
 
 const CreateEventBody = () => {
   const { saveEventOnLocalStorage } = useContext(EventsContext)
+  const { close } = useContext(ModalContext)
   const { register, handleSubmit } = useForm<CreateEventParams>()
   const onSubmit: SubmitHandler<CreateEventParams> = (data) => {
     saveEventOnLocalStorage(data)
@@ -59,7 +61,10 @@ const CreateEventBody = () => {
           type="time"
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
-        <button className="text-white mt-3 rounded-lg bg-navHover py-2 px-4 text-textHover transition-colors hover:bg-eventBtn hover:text-secondary">
+        <button
+          onClick={() => close()}
+          className="text-white mt-3 rounded-lg bg-navHover py-2 px-4 text-textHover transition-colors hover:bg-eventBtn hover:text-secondary"
+        >
           Create
         </button>
       </form>

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from 'react'
+import { toast } from 'react-toastify'
 
 export interface CreateEventParams {
   title: string
@@ -26,11 +27,12 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
   const saveEventOnLocalStorage = (event: CreateEventParams) => {
     localStorage.setItem(`${event.title}`, JSON.stringify(event))
     setNewEvent(!newEvent)
-    // toast.success(`Event ${event.title} created!`)
+    toast.success(`Event ${event.title} created!`)
   }
   const removeEventFromLocalStorage = (id: string) => {
     localStorage.removeItem(id)
     setNewEvent(!newEvent)
+    toast.success(`Event ${id} removed!`)
   }
 
   const updateEvent = (titleOldEvent: string, newEvent: CreateEventParams) => {
@@ -39,7 +41,7 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
       localStorage.setItem(`${newEvent.title}`, JSON.stringify(newEvent))
       setNewEvent(!newEvent)
       localStorage.removeItem(titleOldEvent)
-      return event
+      toast.success(`Event ${newEvent.title} updated!`)
     }
     return null
   }
@@ -59,7 +61,7 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
         )
       } catch (error) {
         // this catch is to avoid the error when the localStorage is empty or not Json serializable
-        // because this they dont have any event
+        // because this they dont catch the error, without this the app will crash
       }
     }
     if (eventsArray.length === 0) return []

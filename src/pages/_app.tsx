@@ -1,9 +1,11 @@
 import 'react-calendar/dist/Calendar.css'
 import '../styles/global.css'
 import '../styles/typography.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
+import { ToastContainer } from 'react-toastify'
 
 import { Modal } from '@/components'
 import { CreateEventProvider } from '@/context/event-context'
@@ -18,6 +20,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <ModalProvider>
           <AnyComponent {...pageProps} />
           <Modal />
+          <ToastContainer />
         </ModalProvider>
       </CreateEventProvider>
     </ThemeProvider>

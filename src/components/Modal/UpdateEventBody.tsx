@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { CreateEventParams, EventsContext } from '@/context/event-context'
+import { ModalContext } from '@/context/modal-context'
 
 const UpdateEventBody = ({
   title,
@@ -12,8 +13,10 @@ const UpdateEventBody = ({
 }: CreateEventParams) => {
   const { updateEvent, removeEventFromLocalStorage } = useContext(EventsContext)
   const { register, handleSubmit } = useForm<CreateEventParams>()
+  const { close } = useContext(ModalContext)
   const onSubmit: SubmitHandler<CreateEventParams> = (data) => {
     updateEvent(title, data)
+    close()
   }
   return (
     <div className="flex w-full justify-center bg-primary p-4">
@@ -77,6 +80,7 @@ const UpdateEventBody = ({
             onClick={(e) => {
               e.preventDefault()
               removeEventFromLocalStorage(title)
+              close()
             }}
           >
             Delete
