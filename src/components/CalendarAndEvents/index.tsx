@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 
 import { CreateEventParams, EventsContext } from '@/context/event-context'
 
+import { SchedulerView } from '../SchedulerTable'
 import CalendarComponent from './Calendar'
 import { EventCard } from './EventCard'
 
@@ -20,8 +21,8 @@ export const CalendarAndEvents = () => {
     setEvents(getAllEventsFromLocalStorage())
   }, [newEvent])
   return (
-    <section className="flex flex-1 px-8 pt-8">
-      <div className="w-80 bg-primary">
+    <section className="flex px-8 pt-8 overflow-y-hidden">
+      <div className="w-80">
         {avoidHydration && <CalendarComponent />}
         <div className="mt-7 flex w-full flex-col">
           <p className="mb-3">Next Event</p>
@@ -33,6 +34,9 @@ export const CalendarAndEvents = () => {
               ))}
           </div>
         </div>
+      </div>
+      <div className="ml-8 flex w-full flex-1">
+        <SchedulerView />
       </div>
     </section>
   )

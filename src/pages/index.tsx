@@ -22,9 +22,9 @@ const Index = () => {
         />
       }
     >
-      <main className="flex w-full flex-row bg-secondary">
+      <main className="flex w-full flex-row bg-secondary scrollbar">
         <AsideComponent />
-        <div className="flex w-full flex-1 flex-col bg-primary">
+        <div className="flex max-h-screen w-full flex-1 flex-col bg-primary">
           <Nav />
           <CalendarAndEvents />
         </div>
