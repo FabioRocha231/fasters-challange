@@ -38,7 +38,9 @@ module.exports = {
       logo: 'var(--bg-logo)',
       navHover: 'var(--bg-nav-hover)',
       eventBtn: 'var(--bg-create-event)',
-      search: 'var(--bg-search-input)'
+      search: 'var(--bg-search-input)',
+      deleteBtn: 'var(--bg-delete-btn)',
+      deleteBtnHover: 'var(--bg-delete-btn-hover)'
     },
     textColor: {
       primary: 'var(--text-primary)',

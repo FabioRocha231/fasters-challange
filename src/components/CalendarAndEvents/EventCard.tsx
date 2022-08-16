@@ -4,19 +4,31 @@ import Svg, { SvgIcons } from '@/atoms/Svg'
 import { CreateEventParams } from '@/context/event-context'
 import { ModalContext } from '@/context/modal-context'
 
+import { UpdateEventBody } from '../Modal/UpdateEventBody'
+
 export const EventCard = ({
   title,
   date,
   startAt,
+  description,
   endAt
 }: CreateEventParams) => {
-  const { setIsOpen, setBody } = useContext(ModalContext)
+  const { setIsOpen, setBody, setTitle } = useContext(ModalContext)
   return (
     <article
       className="mt-3 flex w-full cursor-pointer flex-col rounded-lg border border-slate-300 p-2 transition-all hover:scale-105"
       onClick={() => {
         setIsOpen(true)
-        setBody(<h1>Alooooo</h1>)
+        setTitle('Update or Delete Event')
+        setBody(
+          <UpdateEventBody
+            title={title}
+            description={description}
+            date={date}
+            startAt={startAt}
+            endAt={endAt}
+          />
+        )
       }}
     >
       <p className="text-sm">{title}</p>

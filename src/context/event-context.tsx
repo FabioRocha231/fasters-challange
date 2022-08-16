@@ -12,8 +12,8 @@ export interface UserContextData {
   saveEventOnLocalStorage: (event: CreateEventParams) => void // como e um localStorage os metodos nao precisam ser asyncronos
   removeEventFromLocalStorage: (id: string) => void
   getAllEventsFromLocalStorage: () => CreateEventParams[]
+  updateEvent: (titleOldEvent: string, newEvent: CreateEventParams) => void
   newEvent: boolean
-  setNewEvent(newEvent: boolean): void
 }
 
 export interface CreateEventProviderProps {
@@ -25,9 +25,23 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
   const [newEvent, setNewEvent] = useState<boolean>(false)
   const saveEventOnLocalStorage = (event: CreateEventParams) => {
     localStorage.setItem(`${event.title}`, JSON.stringify(event))
+    setNewEvent(!newEvent)
+    // toast.success(`Event ${event.title} created!`)
   }
   const removeEventFromLocalStorage = (id: string) => {
     localStorage.removeItem(id)
+    setNewEvent(!newEvent)
+  }
+
+  const updateEvent = (titleOldEvent: string, newEvent: CreateEventParams) => {
+    const event = localStorage.getItem(titleOldEvent)
+    if (event) {
+      localStorage.setItem(`${newEvent.title}`, JSON.stringify(newEvent))
+      setNewEvent(!newEvent)
+      localStorage.removeItem(titleOldEvent)
+      return event
+    }
+    return null
   }
 
   const getAllEventsFromLocalStorage = () => {
@@ -44,7 +58,7 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
           )
         )
       } catch (error) {
-        // this catch is to avoid the error when the localStorage is empty or not Json serialible
+        // this catch is to avoid the error when the localStorage is empty or not Json serializable
         // because this they dont have any event
       }
     }
@@ -58,8 +72,8 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
         saveEventOnLocalStorage,
         removeEventFromLocalStorage,
         getAllEventsFromLocalStorage,
-        newEvent,
-        setNewEvent
+        updateEvent,
+        newEvent
       }}
     >
       {children}

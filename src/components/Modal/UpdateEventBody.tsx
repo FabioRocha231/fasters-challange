@@ -3,11 +3,17 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { CreateEventParams, EventsContext } from '@/context/event-context'
 
-const CreateEventBody = () => {
-  const { saveEventOnLocalStorage } = useContext(EventsContext)
+const UpdateEventBody = ({
+  title,
+  description,
+  date,
+  startAt,
+  endAt
+}: CreateEventParams) => {
+  const { updateEvent, removeEventFromLocalStorage } = useContext(EventsContext)
   const { register, handleSubmit } = useForm<CreateEventParams>()
   const onSubmit: SubmitHandler<CreateEventParams> = (data) => {
-    saveEventOnLocalStorage(data)
+    updateEvent(title, data)
   }
   return (
     <div className="flex w-full justify-center bg-primary p-4">
@@ -19,7 +25,7 @@ const CreateEventBody = () => {
           {...register('title', { required: true })}
           id="title"
           type="text"
-          placeholder="Put your event title here"
+          placeholder={`${title}`}
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
         <label htmlFor="description" className="text-sm font-medium">
@@ -29,7 +35,7 @@ const CreateEventBody = () => {
           {...register('description', { required: true })}
           id="description"
           type="text"
-          placeholder="description of event"
+          placeholder={`${description}`}
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
         <label htmlFor="date" className="text-sm font-medium">
@@ -39,6 +45,7 @@ const CreateEventBody = () => {
           {...register('date', { required: true })}
           id="date"
           type="date"
+          placeholder={`${date}`}
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
         <label htmlFor="time" className="text-sm font-medium">
@@ -48,6 +55,7 @@ const CreateEventBody = () => {
           {...register('startAt', { required: true })}
           id="time"
           type="time"
+          placeholder={`${startAt}`}
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
         <label htmlFor="time" className="text-sm font-medium">
@@ -57,14 +65,26 @@ const CreateEventBody = () => {
           {...register('endAt', { required: true })}
           id="time"
           type="time"
+          placeholder={`${endAt}`}
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
-        <button className="text-white mt-3 rounded-lg bg-navHover py-2 px-4 text-textHover transition-colors hover:bg-eventBtn hover:text-secondary">
-          Create
-        </button>
+        <span className="flex flex-row gap-x-2">
+          <button className="mt-3 flex flex-1 justify-center rounded-lg bg-navHover py-2 px-4 text-textHover transition-colors hover:bg-eventBtn hover:text-secondary">
+            Update
+          </button>
+          <button
+            className="flex-2 text-white mt-3 flex rounded-lg bg-deleteBtn py-2 px-4 transition-colors hover:bg-deleteBtnHover hover:text-secondary"
+            onClick={(e) => {
+              e.preventDefault()
+              removeEventFromLocalStorage(title)
+            }}
+          >
+            Delete
+          </button>
+        </span>
       </form>
     </div>
   )
 }
 
-export { CreateEventBody }
+export { UpdateEventBody }
