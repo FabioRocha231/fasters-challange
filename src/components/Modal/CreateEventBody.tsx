@@ -1,15 +1,23 @@
 import { useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { CreateEventParams, EventsContext } from '@/context/event-context'
 import { ModalContext } from '@/context/modal-context'
+import formatData from '@/utils/formatData'
 
 const CreateEventBody = () => {
   const { saveEventOnLocalStorage } = useContext(EventsContext)
   const { close } = useContext(ModalContext)
   const { register, handleSubmit } = useForm<CreateEventParams>()
   const onSubmit: SubmitHandler<CreateEventParams> = (data) => {
-    saveEventOnLocalStorage(data)
+    const date = new Date(data.date)
+    if (date < new Date()) {
+      toast.error('Date must be greater than current date')
+      return close()
+    }
+    saveEventOnLocalStorage(formatData(data))
+    close()
   }
   return (
     <div className="flex w-full justify-center bg-primary p-4">
@@ -42,6 +50,7 @@ const CreateEventBody = () => {
           id="date"
           type="date"
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
+          min={new Date().toISOString().split('T')[0]}
         />
         <label htmlFor="time" className="text-sm font-medium">
           Start at:
@@ -61,10 +70,7 @@ const CreateEventBody = () => {
           type="time"
           className="mb-2 rounded-lg bg-search p-2 text-sm font-medium text-navTitle"
         />
-        <button
-          onClick={() => close()}
-          className="text-white mt-3 rounded-lg bg-navHover py-2 px-4 text-textHover transition-colors hover:bg-eventBtn hover:text-secondary"
-        >
+        <button className="text-white mt-3 rounded-lg bg-navHover py-2 px-4 text-textHover transition-colors hover:bg-eventBtn hover:text-secondary">
           Create
         </button>
       </form>

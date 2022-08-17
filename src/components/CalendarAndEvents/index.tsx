@@ -27,15 +27,14 @@ export const CalendarAndEvents = () => {
         <div className="mt-7 flex w-full flex-col">
           <p className="mb-3">Next Event</p>
           <div className="flex w-full flex-col items-center justify-center">
-            {events
-              ?.filter((event) => event.title) // my solution to avoid the window infos in the localStorage
-              .map((event, id) => (
-                <EventCard key={id} {...event} />
-              ))}
+            {events?.length === 0 && <p className="p-4">Noothing to show</p>}
+            {events?.map((event, i) => (
+              <EventCard {...event} key={i} />
+            ))}
           </div>
         </div>
       </div>
-      <div className="ml-8 flex w-full flex-1">
+      <div className="ml-8 flex w-full flex-1 scrollbar-thumb-transparent">
         <SchedulerView />
       </div>
     </section>

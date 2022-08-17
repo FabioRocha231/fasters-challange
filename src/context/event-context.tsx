@@ -24,11 +24,13 @@ export interface CreateEventProviderProps {
 const EventsContext = createContext({} as UserContextData)
 const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
   const [newEvent, setNewEvent] = useState<boolean>(false)
+
   const saveEventOnLocalStorage = (event: CreateEventParams) => {
     localStorage.setItem(`${event.title}`, JSON.stringify(event))
     setNewEvent(!newEvent)
     toast.success(`Event ${event.title} created!`)
   }
+
   const removeEventFromLocalStorage = (id: string) => {
     localStorage.removeItem(id)
     setNewEvent(!newEvent)
@@ -65,7 +67,7 @@ const CreateEventProvider = ({ children }: CreateEventProviderProps) => {
       }
     }
     if (eventsArray.length === 0) return []
-    return eventsArray as CreateEventParams[]
+    return eventsArray.filter((event) => event.title) as CreateEventParams[] // my solution to avoid the window parameters in localStorage
   }
 
   return (
