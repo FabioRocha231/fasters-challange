@@ -2,12 +2,20 @@ import { Calendar } from 'react-calendar'
 
 import Svg, { SvgIcons } from '@/atoms/Svg'
 
-export default function CalendarComponent() {
+interface CalendarProps {
+  getDateFromCalendar: (date: Date | string) => void
+}
+
+export default function CalendarComponent({
+  getDateFromCalendar
+}: CalendarProps) {
   const date = new Date()
   return (
     <Calendar
       onChange={(value: Date) => {
-        console.log(value.toLocaleDateString())
+        // getDateFromCalendar(value)
+        const calendarCurrentDate = new Date(value)
+        getDateFromCalendar(calendarCurrentDate)
       }}
       value={date}
       className="flex w-full flex-col items-center rounded-lg border border-slate-300 p-4 text-xs"

@@ -8,7 +8,6 @@ export interface CreateEventParams {
   startAt: string
   endAt: string
 }
-// import { toast } from "react-toastify";
 export interface UserContextData {
   saveEventOnLocalStorage: (event: CreateEventParams) => void // como e um localStorage os metodos nao precisam ser asyncronos
   removeEventFromLocalStorage: (id: string) => void

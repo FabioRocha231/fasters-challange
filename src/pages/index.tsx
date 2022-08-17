@@ -1,18 +1,9 @@
-// import { useModal } from '@/hooks'
-
-import { Nav } from '@/components'
+import { CalendarAndEvents, Nav } from '@/components'
 import AsideComponent from '@/components/AsideComponent'
-import { CalendarAndEvents } from '@/components/CalendarAndEvents'
 import { Meta } from '@/layouts'
 import { Main } from '@/templates'
 
 const Index = () => {
-  // const { setIsOpen, setBody } = useModal()
-
-  // const handleOpenModal = () => {
-  //  setBody(<p>Maracutaia</p>)
-  //  setIsOpen(true)
-  //  }
   return (
     <Main
       meta={

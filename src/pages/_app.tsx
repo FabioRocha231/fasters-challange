@@ -20,7 +20,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <ModalProvider>
           <AnyComponent {...pageProps} />
           <Modal />
-          <ToastContainer />
+          <ToastContainer className="text-sm" />
         </ModalProvider>
       </CreateEventProvider>
     </ThemeProvider>
